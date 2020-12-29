@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# Accounting Notebook Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application for money accounting system. 
 
-## Available Scripts
+Single page application that displays the user's transactions history list and current account balance
 
-In the project directory, you can run:
+It also exposes an API for get transactions history list, post new transaction, get specific transaction by transactionId and get user's current acount balance.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## About the Application
+The app is divided in two parts: 
+* Server
+    - Nodejs
+    - Express
+    - Typescript
+    - Babel
+* Client
+    - React (using [Create React App](https://github.com/facebook/create-react-app))
+    - Typescript
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## How to run Application
+1) Install Dependences
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    In the project's root directory run
+    
+    ```
+        npm install
+   ```
+    
+    This will install all project's dependences and then automatically install client dependences declared in `/client/package.json` 
 
-### `npm run build`
+2) Start Application
+    
+    In the project's root directory run
+    
+    ```
+        npm start
+    ```
+   
+   This will start the the entire application in port 8080.
+   
+   The client application will run in [localhost:8080](localhost:8080)
+   
+   The API will be accessible from [localhost:8080/api/](localhost:8080/api)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## API Documentation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The API and the object modeling was defined using [this recommendations](http://agileengine.gitlab.io/interview/test-tasks/fsNDJmGOAwqCpzZx/api/#/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Base url `localhost:8080/api/`
 
-### `npm run eject`
+### Transactions API
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+`localhost:8080/api/transactions`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* GET `/`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    Fetches transactions history
+    
+* POST `/`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+    Commit new transaction to the account
+    
+* GET `/{transactionId}`
 
-## Learn More
+    Returns a single transaction object
+  
+### Balance API
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`localhost:8080/api`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* GET `/`
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    Fetches current account balance
