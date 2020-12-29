@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Accordion, Card } from "react-bootstrap";
-import TransactionDetail from "./TransactionDetail";
-import { Transaction } from "../typings/Transaction";
-import {TransactionType} from "../enums/TransactionType";
+import { Accordion, Card } from 'react-bootstrap';
+
+import TransactionDetail from './TransactionDetail';
+import Transaction from '../models/Transaction';
+import { TransactionType } from '../enums/TransactionType';
 
 interface Props {
     transaction: Transaction;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Accordion } from "react-bootstrap";
 import TransactionRow from "./TransactionRow";
-import {Transaction} from "../typings/Transaction";
+import Transaction from '../models/Transaction';
 
 interface Props {
     transactions: Transaction[];

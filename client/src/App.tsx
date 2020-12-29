@@ -2,10 +2,8 @@ import * as React from 'react';
 import { useEffect, useState } from 'react';
 
 import APIClient from './api'
-import { calculateBalance } from './utils/transactions';
-import TransactionsList from "./components/TransactionsList";
-import {Transaction} from "./typings/Transaction";
-import Balance from "./components/Balance";
+import TransactionsList from './components/TransactionsList';
+import Balance from './components/Balance';
 
 
 const App = () => {
@@ -14,11 +12,13 @@ const App = () => {
     const [transactions, setTransactions]= useState([] as any);
 
     useEffect(() => {
-        APIClient.getTransactions().then((result: Transaction[]) => {
-                setTransactions(result);
-                const balance : number = result.reduce(calculateBalance, 0);
-                setAmount(balance);
-        })
+        Promise.all([APIClient.getTransactions(), APIClient.getBalance()])
+        .then((result: any[]) => {
+            const [transactionsData, balanceData] = result;
+
+            setTransactions(transactionsData);
+            setAmount(balanceData);
+        }).catch(() => console.log('There was an error fetching data'))
     }, []);
 
     return (
