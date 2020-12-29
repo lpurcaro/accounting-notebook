@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Transaction from '../../../server/src/api/components/transactions/model';
+import Transaction from '../../../server/api/components/transactions/model';
 
 interface Props {
     transaction: Transaction;

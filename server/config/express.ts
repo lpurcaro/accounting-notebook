@@ -8,7 +8,11 @@ const app = express();
 
 app.use(cors());
 
+app.use(express.static(process.cwd() + '/client/build'));
+app.use(express.static(process.cwd() + '/client/public'));
+
 app.use(express.json());
+
 app.use('/api', apiRoutes);
 
 app.use(errorHandler);

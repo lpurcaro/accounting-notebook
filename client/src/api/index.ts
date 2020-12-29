@@ -3,7 +3,7 @@ import axios from 'axios';
 import Transaction from '../models/Transaction';
 
 class APIClient {
-    static API_URL = 'http://localhost:8080/api';
+    static API_URL = '/api';
 
     static endpoints = {
         transactions: '/transactions',
